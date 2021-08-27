@@ -116,7 +116,6 @@ app.get("/user/tweets/feed/", authenticateToken, async (request, response) => {
     FROM
         follower INNER JOIN user ON user.user_id = follower.following_user_id
         INNER JOIN tweet ON user.user_id = tweet.user_id
-    GROUP BY tweet.tweet_id;
     ORDER BY
         dateTime DESC
     LIMIT 4;
@@ -260,7 +259,9 @@ app.get(
                     user.name,
                     reply.reply
                 FROM
-                    user INNER JOIN reply ON user.user_id = reply.user_id;
+                    user INNER JOIN reply ON user.user_id = reply.user_id
+                WHERE
+                    reply.tweet_id = ${tweetId};
             `;
       const data = await db.all(getReplyQuery);
       response.send({ replies: data });
@@ -274,7 +275,8 @@ app.get(
 //API 9
 app.get("/user/tweets/", authenticateToken, async (request, response) => {
   const { username } = request;
-  const getQuery = `
+
+  const getUserTweetQuery = `
          SELECT 
             tweet.tweet,
             COUNT(like.like_id) AS likes,
@@ -287,9 +289,9 @@ app.get("/user/tweets/", authenticateToken, async (request, response) => {
         WHERE
             user.username = '${username}'
         GROUP BY
-            tweet.tweet_id;
+            tweet.tweet_id
         `;
-  const data = await db.all(getQuery);
+  const data = await db.all(getUserTweetQuery);
   response.send(data);
 });
 
