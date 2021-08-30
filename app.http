@@ -20,13 +20,17 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/user/tweets/
+GET http://localhost:3000/tests
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNjI3NDQxNTIwfQ.7_nwLk0P9DpuL_l3-TTZjdMhcFEPC9LEB9gBX4-EySA
-
 
 ###
 
-GET http://localhost:3000/tweets/4/replies/
+GET http://localhost:3000/user/tweets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNjI3NDQxNTIwfQ.7_nwLk0P9DpuL_l3-TTZjdMhcFEPC9LEB9gBX4-EySA
+
+###
+
+GET http://localhost:3000/tweets/7
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNjI3NDQxNTIwfQ.7_nwLk0P9DpuL_l3-TTZjdMhcFEPC9LEB9gBX4-EySA
 
 ###
